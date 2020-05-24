@@ -45,9 +45,23 @@ Can change in child Components? | Yes | No
 
 \ * Обратите внимание, что исходные значения _props_ и _state_, полученные от родителей, имеют приоритет над значениями по умолчанию, определенными внутри компонента.
 
-
-
 [props vs state](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)
 
 
+
+
+---------------------------------------
+
+# Implementing a login form with a class
+
+[link](https://medium.com/@leandroercoli/react-refactoring-from-class-to-function-components-and-hooks-74f176ea77d6)
+
+
+---------------------------------------
+
+
+
+
 [Full Colour - Times Change](https://youtu.be/9YRfJj0muDo?t=55)
+
+[Max Leone - The Beach](https://youtu.be/7fS8SslvPLk?t=19)
