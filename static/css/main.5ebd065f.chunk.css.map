@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,KACI,iBAAkB,CAClB,wBACJ,CAEA,WACI,WACJ,CAEA,OACI,iBACJ,CAEA,QACI,eACJ","file":"main.5ebd065f.chunk.css","sourcesContent":[".App {\n    text-align: center;\n    background-color: ghostwhite;\n}\n\nbody > .grid {\n    height: 100%;\n}\n\n.image {\n    margin-top: -100px;\n}\n\n.column {\n    max-width: 450px;\n}"]}
