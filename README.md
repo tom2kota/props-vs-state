@@ -88,6 +88,22 @@ function FormattedDate(props) {
 
 Если представить иерархию компонентов как водопад пропсов, то состояние каждого компонента похоже на дополнительный источник, который сливается с водопадом в произвольной точке, но также течёт вниз.
 
+---------------------------------------
+
+#### [ Data Handling in React ](https://towardsdatascience.com/passing-data-between-react-components-parent-children-siblings-a64f89e24ecf)
+
+ - From Parent to Child using Props
+
+ - From Child to Parent using Callbacks
+ 
+ - Between Siblings:
+ 
+    * Combine above two methods (From Parent to Child using Props || From Child to Parent using Callbacks)
+    
+    * Using Redux
+    
+    * Using React’s Context API
+
 
 ---------------------------------------
 
