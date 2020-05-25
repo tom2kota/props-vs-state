@@ -107,9 +107,218 @@ function FormattedDate(props) {
 
 ---------------------------------------
 
+##### Between Siblings
+
+![Method 1: Combine the above two methods of sharing data](/src/images/callback.gif)
+
+
+![Method 2: Use a global store maintaining the states of all child components which are needed to interact and consume the data required from the store — Redux](/src/images/redux.gif)
+
+
+![Method 3: Use React’s Context API](/src/images/context.png)
+
+---------------------------------------
+
 # Implementing a login form 
 
 [link](https://medium.com/@leandroercoli/react-refactoring-from-class-to-function-components-and-hooks-74f176ea77d6)
+
+# Implementing LoginState Form
+
+##### STEPS:
+
+1). To manage the logic behind our form, we could save our input values in the component’s state, and call an appropriate method when the onChange event gets triggered, updating our stateful values:
+
+```
+    state = {
+        username: "",
+        password: ""
+    }
+
+    handleChangeUsername = (event) => {
+        this.setState({username: event.target.value})
+    }
+
+    handleChangePassword = (event) => {
+        this.setState({password: event.target.value})
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(`FORM SUBMITTED WITH: 
+                     ${this.state.username}, 
+                     ${this.state.password}`)
+    }
+```
+
+2). Finally, when the form gets submitted, we would have to call a handleSubmit method that performs all the necessary logic to log the user (e.g. an API call to check if the user exists). The complete class component would then be:
+
+``` 
+import React, {Component} from "react";
+import './LoginState.css';
+
+class LoginState extends Component {
+
+    state = {
+        username: "",
+        password: ""
+    }
+
+    handleChangeUsername = (event) => {
+        this.setState({username: event.target.value})
+    }
+
+    handleChangePassword = (event) => {
+        this.setState({password: event.target.value})
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(`FORM SUBMITTED WITH: 
+                     ${this.state.username} 
+                     ${this.state.password}`)
+    }
+
+    render() {
+        console.log('LOGIN STATE: ', this.state)
+
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <h1>LoginState</h1>
+                <div>
+                    <div>
+                        <input onChange={this.handleChangeUsername} value={this.state.username}
+                               name="email"
+                               type="email"
+                               placeholder="email"
+                        />
+                    </div>
+                    <div>
+                        <input onChange={this.handleChangePassword} value={this.state.password}
+                               name="password"
+                               type="password"
+                               placeholder="password"
+                        />
+                    </div>
+                </div>
+
+                <button type="submit">
+                    LoginState
+                </button>
+            </form>
+        );
+    }
+}
+
+export default LoginState
+
+```
+
+3). Refactoring into a stateless function.
+   
+   To restructure a class component into a function component we should consider that a plain JavaScript function component is stateless, intended to keep the focus on the presentation and improve reusability through a modular approach. This means that we have to maintain our state in a parent component and pass it down to our function components as props.
+   
+   To illustrate this in our form component lets encapsulate the presentation elements, returned by the render method, inside a separate function component that receives the username and password as props.
+   
+``` 
+import React from "react";
+
+const LoginPropsOne = (props) => (
+    <form onSubmit={props.handleSubmit}>
+        <h1>LoginState</h1>
+        <div>
+            <div>
+                <input onChange={(event) => props.setUsername(event.target.value)} value={props.username}
+                       name="email"
+                       type="email"
+                       placeholder="email"
+                       required
+                />
+            </div>
+            <div>
+                <input onChange={(event) => props.setPassword(event.target.value)} value={props.password}
+                       name="password"
+                       type="password"
+                       placeholder="password"
+                       required
+                />
+            </div>
+        </div>
+
+        <button type="submit">
+            LoginState
+        </button>
+    </form>
+)
+
+export default LoginPropsOne
+```
+
+4). ES6 tip: use destructuring on props to clean the code and improve readability
+
+``` 
+import React from "react";
+
+const LoginPropsTwo = (props) => {
+
+    const {username, password, onSubmit, setUsername, setPassword} = props;
+
+    return (
+        <form onSubmit={onSubmit}>
+            <h1>LoginState</h1>
+            <div>
+                <div>
+                    <input onChange={(event) => setUsername(event.target.value)} value={username}
+                           name="email"
+                           type="email"
+                           placeholder="email"
+                           required
+                    />
+                </div>
+                <div>
+                    <input onChange={(event) => setPassword(event.target.value)} value={password}
+                           name="password"
+                           type="password"
+                           placeholder="password"
+                           required
+                    />
+                </div>
+            </div>
+
+            <button type="submit">
+                LoginState
+            </button>
+        </form>
+    )
+}
+
+export default LoginPropsTwo
+```
+
+5). Semantic UI
+
+[LoginLayout](https://github.com/Semantic-Org/Semantic-UI-React/blob/master/docs/src/layouts/LoginLayout.js)
+
+[FormSubmit](https://react.semantic-ui.com/collections/form/#usage-clear-on-submit)
+
+
+``` 
+
+```
+
+6). Hooks
+
+``` 
+
+```
+
+### P.S.
+
+[5 Ways to Convert React Class Components to Functional Components with React Hooks](https://www.digitalocean.com/community/tutorials/five-ways-to-convert-react-class-components-to-functional-components-with-react-hooks)
+
+
+[Colorful console.log](https://coderwall.com/p/fskzdw/colorful-console-log)
+
 
 
 ---------------------------------------
