@@ -1,6 +1,15 @@
 # props-vs-state
-###### Refactoring in your React.js application
 
+## Login Form
+
+### Code Refactoring in React App
+
+![React_App_Deploy_to_gh-pages_CI](https://github.com/tom2kota/props-vs-state/workflows/React_App_Deploy_to_gh-pages_CI/badge.svg)
+
+
+[DEMO](https://tom2kota.github.io/props-vs-state/)
+
+-------------------
 
 A common pattern is to create several stateless components that just render data, and have a stateful component above them in the hierarchy that passes its state to its children via props. 
 
